@@ -63,7 +63,7 @@ def get_serached_result(request,querysets,admin_class):
         for search_field in admin_class.search_fields:
             q.children.append(("%s__contains"% search_field,search_key))
 
-
+        print('q',q)
         return  querysets.filter(q)
     return querysets
 
@@ -116,7 +116,6 @@ def table_obj_list(request,app_name,model_name):
         querysets = paginator.page(paginator.num_pages)
     print(request.GET)
     #print("admin class",admin_class.model )
-
     return render(request,'kingadmin/table_obj_list.html', locals())
 
 
